@@ -1,3 +1,4 @@
+import 'package:ecommerce/router/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/resources/import_resources.dart';
 import 'package:ecommerce/resources/resources.dart';
@@ -59,7 +60,7 @@ class OnBoardingScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   debugPrint("Button pressed");
-                  Get.offAllNamed("/LoginPage");
+                  context.go(RoutesName.loginScreen);
                 },
                 style: ElevatedButton.styleFrom(
                     fixedSize: Size(200.w, 50.h),

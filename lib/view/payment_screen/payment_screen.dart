@@ -2,6 +2,7 @@ import 'package:ecommerce/resources/import_resources.dart';
 import 'package:flutter/material.dart';
 import '../../models/model.dart';
 import '../../resources/resources.dart';
+import '../../router/route_name.dart';
 import '../../widget/reuse_widget.dart';
 
 // ignore: must_be_immutable
@@ -87,7 +88,7 @@ class PaymentScreen extends StatelessWidget {
                 strokeWidth: 1,
                 child: GestureDetector(
                   onTap: () {
-                    Get.toNamed("/AddPaymentScreen");
+                    context.push(RoutesName.addPaymentScreen);
                   },
                   child: Container(
                     height: 45.h,
@@ -202,7 +203,7 @@ class PaymentScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20).w),
                           ),
                           onPressed: () {
-                            Get.offAllNamed("/HomePage");
+                            context.go(RoutesName.homeScreen);
                           },
                           child: Text(
                             "Continue Shopping",

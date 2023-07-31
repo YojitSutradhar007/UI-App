@@ -1,4 +1,5 @@
 import 'package:ecommerce/firebase_options.dart';
+import 'package:ecommerce/router/route.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'provider/provider.dart';
@@ -7,7 +8,7 @@ import 'resources/resources.dart';
 import 'view/splash_screen/splash_screen.dart';
 import 'view_models/product_view_model.dart';
 
-
+import 'package:go_router/go_router.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ Future main() async {
   );
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -41,20 +43,20 @@ class MyApp extends StatelessWidget {
           ],
           child: Consumer<ThemeChange>(
             builder: (context, value, child) {
-              return GetMaterialApp(
-                  theme: ThemeData(
-                    scaffoldBackgroundColor: ColorManager.whiteColor,
-                    fontFamily: "Mukta",
-                  ),
-                  darkTheme: ThemeData(
-                    scaffoldBackgroundColor: ColorManager.blackColor,
-                    brightness: Brightness.dark,
-                    fontFamily: "Mukta",
-                  ),
-                  themeMode: value.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-                  debugShowCheckedModeBanner: false,
-                  home: const SplashScreen(),
-                  getPages: routes);
+              return MaterialApp.router(
+                theme: ThemeData(
+                  scaffoldBackgroundColor: ColorManager.whiteColor,
+                  fontFamily: "Mukta",
+                ),
+                darkTheme: ThemeData(
+                  scaffoldBackgroundColor: ColorManager.blackColor,
+                  brightness: Brightness.dark,
+                  fontFamily: "Mukta",
+                ),
+                themeMode: value.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+                debugShowCheckedModeBanner: false,
+                routerConfig: router,
+              );
             },
           ),
         );

@@ -1,3 +1,5 @@
+import 'package:ecommerce/router/route_name.dart';
+
 import '../resources/assets_manager.dart';
 
 class OptionButton {
@@ -5,17 +7,17 @@ class OptionButton {
     Option(
       label: "Personal details",
       iconAsset: IconsAssets.userLogo,
-      navigation: "/UserProfile",
+      navigation: RoutesName.userProfileScreen,
     ),
     Option(
       label: "My order",
       iconAsset: IconsAssets.shoppingBagLogo,
-      navigation: "/ProfileShoppingCart",
+      navigation: RoutesName.shoppingCartScreen,
     ),
     Option(
       label: "My Favorites",
       iconAsset: IconsAssets.wishListLogo,
-      navigation: "/ProfileWishListScreen",
+      navigation: RoutesName.profileWishListScreen,
     ),
     Option(
       label: "Shipping address",

@@ -1,4 +1,5 @@
 import 'package:ecommerce/resources/import_resources.dart';
+import 'package:ecommerce/router/route_name.dart';
 import 'package:flutter/material.dart';
 import '../../resources/resources.dart';
 import '../../widget/reuse_widget.dart';
@@ -182,7 +183,7 @@ class CartDelivery extends StatelessWidget {
               height: 50,
               width: 120,
               onPressed: () {
-                Get.toNamed("/TrackingProduct");
+                context.push(RoutesName.trackingScreen);
               },
               child: DesignText(text: "Place order", fontSize: 15, color: ColorManager.whiteColor),
             )

@@ -16,7 +16,7 @@ class BackIconButton extends StatelessWidget {
       ).r,
       child: IconButton(
         onPressed: () {
-          Get.back();
+          Navigator.of(context).pop();
         },
         icon: Image.asset(IconsAssets.backButtonLogo),
       ),

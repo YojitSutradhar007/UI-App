@@ -104,7 +104,7 @@ class FilterScreen extends StatelessWidget {
             DesignText(padding: 8, fontSize: 18, text: "Ratting by", color: ColorManager.blackColor),
             PrimaryButton(
               onPressed: () {
-                Get.back();
+                Navigator.of(context).pop();
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

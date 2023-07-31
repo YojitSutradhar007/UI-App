@@ -27,9 +27,9 @@ class ProductDetailsView extends StatelessWidget {
                 GestureDetector(
                   onDoubleTap: () {
                     debugPrint("Navigate image");
-                    Get.to(ProductView(
-                      images: model[index].images!,
-                    ));
+                    // Get.to(ProductView(
+                    //   images: model[index].images!,
+                    // ));
                   },
                   child: Hero(
                     tag: "image",
@@ -191,7 +191,7 @@ class ProductDetailsView extends StatelessWidget {
             ],
           ),
           onPressed: () {
-            Get.back();
+            Navigator.of(context).pop();
           },
         ),
       ),

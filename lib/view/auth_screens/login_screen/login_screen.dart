@@ -1,3 +1,4 @@
+import 'package:ecommerce/router/route_name.dart';
 import 'package:ecommerce/services/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/resources/resources.dart';
@@ -81,7 +82,8 @@ class LoginScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed("/ForgetPassword");
+                    context.push(RoutesName.forgetScreen);
+
                   },
                   child: const Text(
                     "Forget password?",
@@ -141,7 +143,7 @@ class LoginScreen extends StatelessWidget {
                   child: Center(
                     child: GestureDetector(
                       onTap: () {
-                        Get.toNamed("/SignUp");
+                        context.push(RoutesName.signupScreen);
                       },
                       child: RichText(
                         text: TextSpan(

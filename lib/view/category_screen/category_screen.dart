@@ -18,9 +18,9 @@ class Categories extends StatelessWidget {
   ];
 
   void onTap(String suffix) {
-    Get.to(SearchProduct(
-      searchText: suffix,
-    ));
+    // Get.to(SearchProduct(
+    //   searchText: suffix,
+    // ));
   }
 
   @override

@@ -1,3 +1,4 @@
+import 'package:ecommerce/router/route_name.dart';
 import 'package:ecommerce/user_preferences/user_preferences.dart';
 import 'package:ecommerce/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +7,7 @@ import 'package:ecommerce/resources/import_resources.dart';
 import '../../widget/reuse_widget.dart';
 import 'components/all_product.dart';
 import '../../listdata/data.dart';
-import 'components/bottom_tabs.dart';
-import '../../provider/bottum_navigation.dart';
+
 import 'package:ecommerce/view/screens.dart';
 
 // ignore: must_be_immutable
@@ -43,14 +43,15 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           IcnButton(
                               onPressed: () {
-                                Get.toNamed("/Categories");
+                                context.push(RoutesName.categoriesScreen);
                               },
                               iconSize: 45,
                               child: Image.asset(IconsAssets.dashboardLogo)),
                           IcnButton(
                             iconSize: 45,
                             onPressed: () {
-                              Get.toNamed("/UserProfile");
+                              context.push(RoutesName.userProfileScreen);
+
                             },
                             child: CrcleAvatar(
                               color: RGBColorManager.rgbWhiteColor,
@@ -82,18 +83,19 @@ class HomeScreen extends StatelessWidget {
                 textCtrl: _searchCtrl,
                 onPressed: () {
                   debugPrint("search icon");
-                  Get.to(
-                    SearchProduct(
-                      searchText: _searchCtrl.text.trim(),
-                    ),
-                  );
+                  // Get.to(
+                  //   SearchProduct(
+                  //     searchText: _searchCtrl.text.trim(),
+                  //   ),
+                  // );
                   _searchCtrl.text = "";
                   searchData.loading = true;
                 },
                 child: IcnButton(
                   iconSize: 0,
                   onPressed: () {
-                    Get.toNamed("/FilterScreen");
+                    context.push(RoutesName.filterScreen);
+
                   },
                   child: CrcleAvatar(
                     radius: 23,

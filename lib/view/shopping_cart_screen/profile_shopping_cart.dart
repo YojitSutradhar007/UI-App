@@ -1,4 +1,5 @@
 import 'package:ecommerce/resources/import_resources.dart';
+import 'package:ecommerce/router/route_name.dart';
 import 'package:flutter/material.dart';
 import '../../resources/resources.dart';
 import '../../widget/reuse_widget.dart';
@@ -56,7 +57,7 @@ class ProfileShoppingCart extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed("/CartDelivery");
+                context.push(RoutesName.cartDeliveryScreen);
               },
               style: ElevatedButton.styleFrom(
                   fixedSize: Size(350.w, 50.h),

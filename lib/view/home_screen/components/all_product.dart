@@ -27,12 +27,12 @@ class AllProduct extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     debugPrint("Product Category");
-                    Get.to(
-                      ProductDetailsView(
-                        index: index,
-                        model: value.productData,
-                      ),
-                    );
+                    // Get.to(
+                    //   ProductDetailsView(
+                    //     index: index,
+                    //     model: value.productData,
+                    //   ),
+                    // );
                   },
                   child: Container(
                     height: 160.h,

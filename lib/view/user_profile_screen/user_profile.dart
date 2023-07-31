@@ -1,4 +1,5 @@
 import 'package:ecommerce/resources/import_resources.dart';
+import 'package:ecommerce/router/route_name.dart';
 import 'package:flutter/material.dart';
 import '../../provider/theme_mode.dart';
 import '../../resources/resources.dart';
@@ -185,7 +186,7 @@ class UserProfile extends StatelessWidget {
                               children: [
                                 DesignLabel(
                                   onTap: () {
-                                    Get.toNamed("/SelectLanguage");
+                                    context.push(RoutesName.selectLanguageScreen);
                                   },
                                   sizeBoxWidth: 200,
                                   label_1: "Language",
@@ -285,7 +286,7 @@ class UserProfile extends StatelessWidget {
                                                 shape:
                                                     RoundedRectangleBorder(borderRadius: BorderRadius.circular(20).w)),
                                             onPressed: () {
-                                              Get.back();
+                                              Navigator.of(context).pop();
                                             },
                                             child: Text(
                                               "Close",

@@ -1,4 +1,5 @@
 import 'package:ecommerce/resources/import_resources.dart';
+import 'package:ecommerce/router/route_name.dart';
 import 'package:flutter/material.dart';
 import '../../listdata/product_categorylist.dart';
 import '../../resources/resources.dart';
@@ -55,7 +56,7 @@ class ProfileWishListScreen extends StatelessWidget {
               child: IcnButton(
                 iconSize: 0,
                 onPressed: () {
-                  Get.toNamed("/FilterScreen");
+                  context.push(RoutesName.filterScreen);
                 },
                 child: CrcleAvatar(
                   radius: 25,

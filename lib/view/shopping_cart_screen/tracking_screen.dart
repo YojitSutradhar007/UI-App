@@ -1,4 +1,5 @@
 import 'package:ecommerce/resources/import_resources.dart';
+import 'package:ecommerce/router/route_name.dart';
 import 'package:flutter/material.dart';
 import '../../resources/resources.dart';
 import '../../widget/reuse_widget.dart';
@@ -24,7 +25,7 @@ class TrackingProduct extends StatelessWidget {
                 child: IcnButton(
                   iconSize: 0,
                   onPressed: () {
-                    Get.toNamed("/FilterScreen");
+                    context.push(RoutesName.filterScreen);
                   },
                   child: CrcleAvatar(
                     radius: 23,
@@ -111,7 +112,8 @@ class TrackingProduct extends StatelessWidget {
                       color: ColorManager.whiteColor,
                     ),
                     onPressed: () {
-                      Get.toNamed("/PaymentScreen");
+                      context.push(RoutesName.paymentScreen);
+
                     },
                   ),
                 ],

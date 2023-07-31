@@ -85,7 +85,7 @@ class UserAccount extends StatelessWidget {
                       children: [
                         DesignLabel(
                           onTap: () {
-                            Get.toNamed(OptionButton.userAccountOptions_1[index].navigation);
+                            context.push(OptionButton.userAccountOptions_1[index].navigation);
                           },
                           sizeBoxWidth: 230,
                           label_1: OptionButton.userAccountOptions_1[index].label,
@@ -115,7 +115,7 @@ class UserAccount extends StatelessWidget {
                       children: [
                         DesignLabel(
                           onTap: () {
-                            Get.toNamed(OptionButton.userAccountOptions_2[index].navigation);
+                            context.push(OptionButton.userAccountOptions_2[index].navigation);
                           },
                           sizeBoxWidth: 230,
                           label_1: OptionButton.userAccountOptions_2[index].label,
@@ -149,7 +149,7 @@ class IconNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        Get.toNamed(navigation);
+        context.push(navigation);
       },
       icon: Image.asset(IconsAssets.rightArrowLogo, height: 15),
     );

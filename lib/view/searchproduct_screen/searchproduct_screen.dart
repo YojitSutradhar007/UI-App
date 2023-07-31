@@ -70,12 +70,12 @@ class _SearchProductState extends State<SearchProduct> {
                               child: GestureDetector(
                                 onTap: () {
                                   debugPrint("search screen");
-                                  Get.to(
-                                    ProductDetailsView(
-                                      index: index,
-                                      model: value.searchProductData,
-                                    ),
-                                  );
+                                  // Get.to(
+                                  //   ProductDetailsView(
+                                  //     index: index,
+                                  //     model: value.searchProductData,
+                                  //   ),
+                                  // );
                                 },
                                 child: Container(
                                   margin: const EdgeInsets.only(top: 10).r,

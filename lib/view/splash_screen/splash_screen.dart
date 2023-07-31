@@ -1,3 +1,4 @@
+import 'package:ecommerce/router/route_name.dart';
 import 'package:flutter/material.dart';
 import '../../resources/resources.dart';
 import '../../resources/import_resources.dart';
@@ -31,9 +32,9 @@ class _SplashScreenState extends State<SplashScreen> {
           userPreferences.pass != null &&
           userPreferences.email!.isNotEmpty &&
           userPreferences.pass!.isNotEmpty) {
-        Get.offNamed("/HomePage");
+      context.go(RoutesName.homeScreen);
       } else {
-        Get.offNamed("/GetStartPage");
+        context.go(RoutesName.onBoardingScreen);
       }
     });
   }
