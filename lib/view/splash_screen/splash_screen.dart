@@ -4,12 +4,9 @@ import '../../resources/resources.dart';
 import '../../resources/import_resources.dart';
 import '../../user_preferences/user_preferences.dart';
 
-
 class SplashScreen extends StatefulWidget {
   static const String id = "_SplashScreenState";
-
   const SplashScreen({Key? key}) : super(key: key);
-
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -19,7 +16,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     userPreferences.getUserInfo();
     navigation();
@@ -27,16 +23,19 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigation() async {
     Duration time = const Duration(seconds: 3);
-    await Future.delayed(time, () {
-      if (userPreferences.email != null &&
-          userPreferences.pass != null &&
-          userPreferences.email!.isNotEmpty &&
-          userPreferences.pass!.isNotEmpty) {
-      context.go(RoutesName.homeScreen);
-      } else {
-        context.go(RoutesName.onBoardingScreen);
-      }
-    });
+    await Future.delayed(
+      time,
+      () {
+        if (userPreferences.email != null &&
+            userPreferences.pass != null &&
+            userPreferences.email!.isNotEmpty &&
+            userPreferences.pass!.isNotEmpty) {
+          context.go(RoutesName.homeScreen);
+        } else {
+          context.go(RoutesName.onBoardingScreen);
+        }
+      },
+    );
   }
 
   @override

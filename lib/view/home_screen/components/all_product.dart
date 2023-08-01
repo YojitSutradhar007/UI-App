@@ -1,8 +1,9 @@
+import 'package:ecommerce/router/route_name.dart';
 import 'package:ecommerce/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/resources/resources.dart';
+import '../../../models/model.dart';
 import '../../../resources/import_resources.dart';
-import '../../screens.dart';
 
 // we are showing the data of the product in the grid view
 class AllProduct extends StatelessWidget {
@@ -26,13 +27,7 @@ class AllProduct extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    debugPrint("Product Category");
-                    // Get.to(
-                    //   ProductDetailsView(
-                    //     index: index,
-                    //     model: value.productData,
-                    //   ),
-                    // );
+                    context.push(RoutesName.productDetailsScreen, extra: value.productData[index]);
                   },
                   child: Container(
                     height: 160.h,
@@ -54,8 +49,12 @@ class AllProduct extends StatelessWidget {
                   value.productData[index].title.toString(),
                   style: const TextStyle(fontFamily: "Varela", fontWeight: FontWeightManager.semiBold),
                 ),
-                Text(value.productData[index].brand.toString()),
-                Text("₹${value.productData[index].price.toString()}"),
+                Text(
+                  value.productData[index].brand.toString(),
+                ),
+                Text(
+                  "₹${value.productData[index].price.toString()}",
+                ),
               ],
             );
           },
@@ -63,4 +62,12 @@ class AllProduct extends StatelessWidget {
       },
     );
   }
+}
+
+class ProductDetailsModel {
+  ProductDetailsModel({
+    required this.model,
+  });
+
+  final Product model;
 }

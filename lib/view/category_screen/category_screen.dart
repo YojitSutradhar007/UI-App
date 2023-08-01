@@ -1,4 +1,5 @@
 import "package:ecommerce/resources/import_resources.dart";
+import "package:ecommerce/router/route_name.dart";
 import "package:ecommerce/view_models/product_view_model.dart";
 import "package:flutter/material.dart";
 import "../../resources/resources.dart";
@@ -16,12 +17,6 @@ class Categories extends StatelessWidget {
     CategoryList(label: "Women's product", icon: IconsAssets.womenLogo, suffix: "women"),
     CategoryList(label: "Men's product", icon: IconsAssets.menLogo, suffix: "men"),
   ];
-
-  void onTap(String suffix) {
-    // Get.to(SearchProduct(
-    //   searchText: suffix,
-    // ));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +53,7 @@ class Categories extends StatelessWidget {
                   itemBuilder: (BuildContext context, index) {
                     return GestureDetector(
                       onTap: () {
-                        onTap(cardData[index].suffix.toString());
+                        context.push(RoutesName.searchProduct, extra: cardData[index].suffix.toString());
                         searchData.loading = true;
                       },
                       child: Padding(

@@ -2,6 +2,9 @@ import 'package:ecommerce/router/route_name.dart';
 import 'package:ecommerce/view/screens.dart';
 import 'package:go_router/go_router.dart';
 
+import '../models/model.dart';
+import '../view/home_screen/components/all_product.dart';
+
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(
@@ -74,7 +77,15 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: RoutesName.searchProduct,
-      builder: (context, state) => const SearchProduct(),
+      builder: (context, state) => SearchProduct(
+        searchText: state.extra as String,
+      ),
+    ),
+    GoRoute(
+      path: RoutesName.productDetailsScreen,
+      builder: (context, state) => ProductDetailsView(
+        dataModel: state.extra as Product,
+      ),
     ),
   ],
 );

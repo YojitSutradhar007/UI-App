@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import '../../widget/reuse_widget.dart';
 
 class DiscountScreen extends StatelessWidget {
-  DiscountScreen({Key? key}) : super(key: key);
+  const DiscountScreen({Key? key}) : super(key: key);
 
-  List<String> images = const [
+  final List<String> images = const [
     ProjectNetworkImage.randomImage6,
     ProjectNetworkImage.randomImage7,
     ProjectNetworkImage.randomImage8,

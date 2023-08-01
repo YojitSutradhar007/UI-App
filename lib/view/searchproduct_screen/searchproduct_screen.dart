@@ -7,8 +7,8 @@ import '../../widget/reuse_widget.dart';
 import '../screens.dart';
 
 class SearchProduct extends StatefulWidget {
-  const SearchProduct({Key? key, this.searchText}) : super(key: key);
-  final String? searchText;
+  const SearchProduct({Key? key, required this.searchText}) : super(key: key);
+  final String searchText;
 
   @override
   State<SearchProduct> createState() => _SearchProductState();

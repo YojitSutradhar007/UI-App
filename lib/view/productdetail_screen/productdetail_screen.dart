@@ -1,5 +1,4 @@
-import 'package:ecommerce/models/productdata_model.dart';
-import 'package:ecommerce/view/screens.dart';
+import '../../models/model.dart';
 import '../../resources/resources.dart';
 import '../../resources/import_resources.dart';
 import '../../listdata/data.dart';
@@ -9,9 +8,9 @@ import '../../provider/page_index.dart';
 
 // ignore: must_be_immutable
 class ProductDetailsView extends StatelessWidget {
-  ProductDetailsView({Key? key, required this.index, required this.model}) : super(key: key);
-  final int index;
-  final List<Product> model;
+  ProductDetailsView({Key? key, required this.dataModel}) : super(key: key);
+
+  final Product dataModel;
   int pageIndex = 0;
 
   @override
@@ -34,7 +33,7 @@ class ProductDetailsView extends StatelessWidget {
                   child: Hero(
                     tag: "image",
                     child: CarouselSlider.builder(
-                      itemCount: model[index].images!.length,
+                      itemCount: dataModel.images!.length,
                       options: CarouselOptions(
                           onPageChanged: (index, reason) {
                             pageIndex = activeIndex.changeIndex(index, pageIndex);
@@ -43,7 +42,10 @@ class ProductDetailsView extends StatelessWidget {
                           viewportFraction: 1,
                           enableInfiniteScroll: false),
                       itemBuilder: (BuildContext context, _, pageIndex) {
-                        return Image.network(model[index].images![_], fit: BoxFit.cover);
+                        return Image.network(
+                          dataModel.images![_],
+                          fit: BoxFit.cover,
+                        );
                       },
                     ),
                   ),
@@ -79,7 +81,7 @@ class ProductDetailsView extends StatelessWidget {
                             Consumer<PageIndex>(builder: (context, value, child) {
                               return AnimatedSmoothIndicator(
                                 activeIndex: pageIndex,
-                                count: model[index].images!.length,
+                                count: dataModel.images!.length,
                                 effect: ExpandingDotsEffect(
                                     dotHeight: 7.h,
                                     dotWidth: 8.w,
@@ -112,12 +114,12 @@ class ProductDetailsView extends StatelessWidget {
                         children: [
                           DesignText(
                               padding: 0,
-                              text: model[index].title.toString(),
+                              text: dataModel.title.toString(),
                               fontSize: 15,
                               color: ColorManager.blackColor),
                           DesignText(
                               padding: 0,
-                              text: model[index].brand.toString(),
+                              text: dataModel.brand.toString(),
                               fontSize: 12,
                               color: ColorManager.greyColor),
                         ],
@@ -162,7 +164,7 @@ class ProductDetailsView extends StatelessWidget {
                   ),
                   DesignText(padding: 5, text: "Description", fontSize: 17, color: ColorManager.blackColor),
                   Text(
-                    model[index].description.toString(),
+                    dataModel.description.toString(),
                     style: TextStyle(fontSize: 15, color: ColorManager.darkGreyColor),
                   ),
                 ],

@@ -1,12 +1,15 @@
 import 'package:ecommerce/provider/bottum_navigation.dart';
 import 'package:ecommerce/resources/import_resources.dart';
 import 'package:flutter/material.dart';
-
 // This are the buttons on button tab bar button with changing index abd body
 
 class BottomTabButton extends StatelessWidget {
-  const BottomTabButton(
-      {super.key, required this.inDex, required this.onSelectImageAsset, required this.notSelectImageAsset});
+  const BottomTabButton({
+    super.key,
+    required this.inDex,
+    required this.onSelectImageAsset,
+    required this.notSelectImageAsset,
+  });
 
   final int inDex;
   final String onSelectImageAsset;
@@ -32,17 +35,17 @@ class BottomTabButton extends StatelessWidget {
           },
           icon: navigation.contain.contains(inDex)
               ? SizedBox(
-            height: 30,
-            child: Image.asset(
-              onSelectImageAsset,
-            ),
-          )
+                  height: 30,
+                  child: Image.asset(
+                    onSelectImageAsset,
+                  ),
+                )
               : SizedBox(
-            height: 25,
-            child: Image.asset(
-              notSelectImageAsset,
-            ),
-          ),
+                  height: 25,
+                  child: Image.asset(
+                    notSelectImageAsset,
+                  ),
+                ),
         );
       },
     );

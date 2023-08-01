@@ -15,7 +15,7 @@ class ProfileWishListScreen extends StatelessWidget {
     ProjectNetworkImage.randomImage4,
     ProjectNetworkImage.randomImage5,
   ];
-  final TextEditingController wishListCtrl = TextEditingController();
+  final TextEditingController _wishListCtrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,15 +43,16 @@ class ProfileWishListScreen extends StatelessWidget {
                   ],
                 ),
                 IcnButton(
-                    onPressed: () {},
-                    child: Image.asset(
-                      IconsAssets.bellLogo,
-                      height: 25,
-                    ))
+                  onPressed: () {},
+                  child: Image.asset(
+                    IconsAssets.bellLogo,
+                    height: 25,
+                  ),
+                )
               ],
             ),
             SearchWidget(
-              textCtrl: wishListCtrl,
+              textCtrl: _wishListCtrl,
               onPressed: () {},
               child: IcnButton(
                 iconSize: 0,

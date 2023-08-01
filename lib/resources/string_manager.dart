@@ -32,6 +32,5 @@ class StaticProductString{
   static const String name =  "Roller Rabit";
   static const String detail =  "Vado odelle dress";
   static const String price =  "\$198";
-
 }
 

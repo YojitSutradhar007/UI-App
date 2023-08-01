@@ -6,11 +6,18 @@ import 'package:ecommerce/resources/import_resources.dart';
 import '../../../widget/reuse_widget.dart';
 import '../../../provider/singin_validation.dart';
 
-class LoginScreen extends StatelessWidget {
-  final TextEditingController _textEmailCtrl = TextEditingController();
-  final TextEditingController _textPassCtrl = TextEditingController();
+class LoginScreen extends StatefulWidget {
 
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _textEmailCtrl = TextEditingController();
+
+  final TextEditingController _textPassCtrl = TextEditingController();
 
   final signInMethod = FirebaseAuthServices();
 
@@ -28,10 +35,7 @@ class LoginScreen extends StatelessWidget {
     final validate = Provider.of<SignInValidation>(context, listen: false);
     return GestureDetector(
       onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
+       WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       },
       child: Scaffold(
         backgroundColor: ColorManager.whiteColor,

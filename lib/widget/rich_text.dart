@@ -29,21 +29,21 @@ class RichTxt extends StatelessWidget {
         ),
         children: <TextSpan>[
           TextSpan(
-              text: text_2,
-              style: fontWeightSizeColorTextStyle(
-                FontWeightManager.bold,
-                textSize_2.sp,
-                ColorManager.greyOpacityColor,
-              ))
+            text: text_2,
+            style: fontWeightSizeColorTextStyle(
+              FontWeightManager.bold,
+              textSize_2.sp,
+              ColorManager.greyOpacityColor,
+            ),
+          )
         ],
       ),
     );
   }
 }
 
-
 class RichThreeTxt extends StatelessWidget {
-  RichThreeTxt({
+  const RichThreeTxt({
     super.key,
     required this.text_1,
     required this.text_2,
@@ -53,18 +53,17 @@ class RichThreeTxt extends StatelessWidget {
     required this.textSize_3,
   });
 
-  String text_1;
-  String text_2;
-  String text_3;
-  double textSize_1;
-  double textSize_2;
-  double textSize_3;
+  final String text_1;
+  final String text_2;
+  final String text_3;
+  final double textSize_1;
+  final double textSize_2;
+  final double textSize_3;
 
   @override
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-
         text: text_1,
         style: fontWeightSizeColorTextStyle(
           FontWeightManager.bold,
@@ -80,12 +79,13 @@ class RichThreeTxt extends StatelessWidget {
                 ColorManager.blackColor,
               )),
           TextSpan(
-              text: text_3,
-              style: fontWeightSizeColorTextStyle(
-                FontWeightManager.medium,
-                textSize_3.sp,
-                ColorManager.greyOpacityColor,
-              )),
+            text: text_3,
+            style: fontWeightSizeColorTextStyle(
+              FontWeightManager.medium,
+              textSize_3.sp,
+              ColorManager.greyOpacityColor,
+            ),
+          ),
         ],
       ),
     );
