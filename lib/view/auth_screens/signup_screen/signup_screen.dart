@@ -5,12 +5,20 @@ import '../../../services/auth_services.dart';
 import '../../../widget/reuse_widget.dart';
 import '../../../provider/signup_validation.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   SignUpScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _textUserNameCtrl = TextEditingController();
+
   final TextEditingController _textEmailCtrl = TextEditingController();
+
   final TextEditingController _textPassCtrl = TextEditingController();
+
   final signup = FirebaseAuthServices();
 
   void signUp(BuildContext context) {

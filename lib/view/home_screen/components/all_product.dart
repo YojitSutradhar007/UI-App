@@ -2,7 +2,6 @@ import 'package:ecommerce/router/route_name.dart';
 import 'package:ecommerce/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/resources/resources.dart';
-import '../../../models/model.dart';
 import '../../../resources/import_resources.dart';
 
 // we are showing the data of the product in the grid view
@@ -31,7 +30,6 @@ class AllProduct extends StatelessWidget {
                   },
                   child: Container(
                     height: 160.h,
-                    width: 145.w,
                     margin: const EdgeInsets.only(bottom: 10).r,
                     decoration: BoxDecoration(
                         image: DecorationImage(
@@ -46,7 +44,9 @@ class AllProduct extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  value.productData[index].title.toString(),
+                  value.productData[index].title!,
+                  softWrap: true,
+                  maxLines: 2,
                   style: const TextStyle(fontFamily: "Varela", fontWeight: FontWeightManager.semiBold),
                 ),
                 Text(
@@ -62,12 +62,4 @@ class AllProduct extends StatelessWidget {
       },
     );
   }
-}
-
-class ProductDetailsModel {
-  ProductDetailsModel({
-    required this.model,
-  });
-
-  final Product model;
 }

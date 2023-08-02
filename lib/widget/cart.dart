@@ -79,8 +79,8 @@ class GestureDetect extends StatelessWidget {
         debugPrint(StringManager.addToCart);
       },
       child: Container(
-        width: 70.w,
-        height: 25.h,
+        height: 28.h,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(color: ColorManager.blackColor, borderRadius: BorderRadius.circular(10).w),
         child: const Center(
           child: Text(

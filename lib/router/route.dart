@@ -3,7 +3,6 @@ import 'package:ecommerce/view/screens.dart';
 import 'package:go_router/go_router.dart';
 
 import '../models/model.dart';
-import '../view/home_screen/components/all_product.dart';
 
 final GoRouter router = GoRouter(
   routes: [
@@ -17,7 +16,7 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: RoutesName.loginScreen,
-      builder: (context, state) => LoginScreen(),
+      builder: (context, state) => const LoginScreen(),
     ),
     GoRoute(
       path: RoutesName.signupScreen,
@@ -74,6 +73,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RoutesName.profileWishListScreen,
       builder: (context, state) => ProfileWishListScreen(),
+    ),
+    GoRoute(
+      path: RoutesName.discountOffersScreen,
+      builder: (context, state) => const DiscountScreen(),
     ),
     GoRoute(
       path: RoutesName.searchProduct,

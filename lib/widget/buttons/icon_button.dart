@@ -16,6 +16,7 @@ class IcnButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+
         padding: EdgeInsets.zero,
         iconSize: iconSize,
         onPressed: onPressed,

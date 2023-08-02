@@ -1,12 +1,11 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce/router/route_name.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import '../resources/color_manager.dart';
 import '../resources/string_manager.dart';
 import '../user_preferences/user_preferences.dart';
-import '../view/screens.dart';
 import '../widget/reuse_widget.dart';
 
 class FirebaseAuthServices {
@@ -67,7 +66,10 @@ class FirebaseAuthServices {
               (value) async {
                 await FirebaseAuth.instance.createUserWithEmailAndPassword(
                     email: textEmailCtrl.text.trim(), password: textPassCtrl.text.trim());
-                Get.offAll(MainScreen());
+                // ignore: use_build_context_synchronously
+                context.go(RoutesName.homeScreen);
+                userPreferences.saveLoginUserInfo(textEmailCtrl.text.trim(), textPassCtrl.text.trim());
+
               },
             );
           }
@@ -78,7 +80,7 @@ class FirebaseAuthServices {
     }
   }
 
-  void signIN(BuildContext context, TextEditingController textEmailCtrl, TextEditingController textPassCtrl) async {
+  Future signIN(BuildContext context, String textEmail, String textPass) async {
     debugPrint("Button pressed");
     final invalidCredentials = bar.snack(StringManager.invalidCredentials, ColorManager.redColor);
     final notExist = bar.snack(StringManager.noAccount, ColorManager.redColor);
@@ -89,28 +91,16 @@ class FirebaseAuthServices {
           return const Center(child: Loading());
         });
     try {
-      await db.collection("Users").doc(textEmailCtrl.text.trim()).get().then(
-        (value) async {
-          debugPrint(textEmailCtrl.text.trim());
-          if (value["Email"] == textEmailCtrl.text.trim()) {
-            debugPrint(value["Email"]);
-            await FirebaseAuth.instance
-                .signInWithEmailAndPassword(email: textEmailCtrl.text.trim(), password: textPassCtrl.text.trim())
-                .then(
-              (value) {
-                userPreferences.saveLoginUserInfo(textEmailCtrl.text, textPassCtrl.text);
-                Get.offAll(MainScreen());
-              },
-            );
-          } else {
-            debugPrint("invalid credentials");
-            Navigator.pop(context);
-            ScaffoldMessenger.of(context).showSnackBar(invalidCredentials);
-          }
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: textEmail, password: textPass)
+          .then(
+        (value)  {
+          context.go(RoutesName.homeScreen);
+           userPreferences.saveLoginUserInfo(textEmail, textPass);
         },
       );
-    } catch (exception) {
-      debugPrint("Account Does not exists");
+    } on FirebaseAuthException catch (e) {
+      debugPrint(e.message);
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(notExist);
     }

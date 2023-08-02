@@ -46,7 +46,7 @@ class DiscountScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            RichThreeTxt(
+                            const RichThreeTxt(
                                 text_1: "50% off\n",
                                 text_2: "On everything today\n",
                                 text_3: "With code: Fscreation\n",
@@ -60,8 +60,8 @@ class DiscountScreen extends StatelessWidget {
                               borderRadius: 20,
                               child:  DesignText(
                                 text: "Get now",
-                                fontSize: 20,
-                                color: ColorManager.blackColor,
+                                fontSize: 10.sp,
+                                color: ColorManager.whiteColor,
                               ),
                             )
                           ],

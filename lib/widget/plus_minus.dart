@@ -16,17 +16,17 @@ class PlusMinus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 25.h,
-      width: 92.w,
       decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(20).w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           IcnButton(
-              onPressed: () {},
-              child: Image.asset(
-                IconsAssets.minusLogo,
-                height: 15,
-              )),
+            onPressed: () {},
+            child: Image.asset(
+              IconsAssets.minusLogo,
+              height: 10.h,
+            ),
+          ),
           Text(
             "1",
             style: TextStyle(fontSize: 14.sp, fontWeight: FontWeightManager.bold),
@@ -35,7 +35,7 @@ class PlusMinus extends StatelessWidget {
             onPressed: () {},
             child: Image.asset(
               IconsAssets.addLogo,
-              height: 15,
+              height: 10.h,
             ),
           ),
         ],

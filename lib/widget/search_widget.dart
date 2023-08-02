@@ -7,13 +7,15 @@ class SearchWidget extends StatelessWidget {
   const SearchWidget({
     super.key,
     this.textCtrl,
-     required this.child,
+    this.onFieldSubmitted,
+    required this.child,
     required this.onPressed,
   });
 
   final TextEditingController? textCtrl;
   final Widget child;
   final VoidCallback onPressed;
+  final void Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -22,38 +24,41 @@ class SearchWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: 280.0.w,
-            height: 45.0.h,
-            decoration: BoxDecoration(
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.only(right: 10),
+              decoration: BoxDecoration(
                 color: RGBColorManager.rgbWhiteColor,
-                borderRadius: BorderRadius.circular(20.w)),
-            child: Row(
-              children: [
-                IcnButton(
+                borderRadius: BorderRadius.circular(20.w),
+              ),
+              child: Row(
+                children: [
+                  IcnButton(
                     onPressed: onPressed,
-                    iconSize: 0,
                     child: SizedBox(
-                      height: 25,
+                      height: 21.h,
                       child: Image.asset(
                         IconsAssets.searchLogo,
                       ),
-                    )),
-                Expanded(
-                  child: TextFormField(
-                    controller: textCtrl,
-                    cursorHeight: 24,
-                    cursorRadius: const Radius.circular(10).w,
-                    cursorColor: ColorManager.blackColor,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      contentPadding: const EdgeInsets.only(left: 11).r,
-                      hintText: "Search",
-                      // border: OutlineInputBorder(),
                     ),
                   ),
-                )
-              ],
+                  Expanded(
+                    child: TextFormField(
+                      controller: textCtrl,
+                      onFieldSubmitted: onFieldSubmitted,
+                      cursorHeight: 24,
+                      cursorRadius: const Radius.circular(10).w,
+                      cursorColor: ColorManager.blackColor,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.only(left: 11).r,
+                        hintText: "Search",
+                        // border: OutlineInputBorder(),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           child

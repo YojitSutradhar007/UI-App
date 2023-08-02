@@ -17,6 +17,7 @@ class RoutesName{
   static const String profileWishListScreen = "/ProfileWishListScreen";
   static const String searchProduct = "/SearchProduct";
   static const String productDetailsScreen = "/productDetailsScreen";
+  static const String discountOffersScreen = "/offersScreen";
 
 
 }

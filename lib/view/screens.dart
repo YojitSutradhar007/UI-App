@@ -23,3 +23,4 @@ export 'auth_screens/forget_password/forget_password.dart';
 export 'auth_screens/login_screen/login_screen.dart';
 export 'auth_screens/signup_screen/signup_screen.dart';
 export 'dashboard/dashboard_screen.dart';
+export 'discountoffers_screen/discount_screen.dart';

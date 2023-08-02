@@ -72,7 +72,7 @@ class UserAccount extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
               Box(
                 child: ListView.builder(
                   shrinkWrap: true,
@@ -102,7 +102,7 @@ class UserAccount extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Box(
                 child: ListView.builder(
                   shrinkWrap: true,

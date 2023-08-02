@@ -29,7 +29,7 @@ class UserPreferences {
     debugPrint("Email: ${email!}");
   }
 
-  void saveLoginUserInfo(String userEmail, String userPassword) async {
+  Future saveLoginUserInfo(String userEmail, String userPassword) async {
     final SharedPreferences userCredentials = await SharedPreferences.getInstance();
     userCredentials.setString("Email", userEmail);
     userCredentials.setString("Password", userPassword);

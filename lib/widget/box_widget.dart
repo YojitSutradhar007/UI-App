@@ -15,7 +15,7 @@ class Box extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 0, left: 15, right: 15, bottom: 0).w,
+      padding: const EdgeInsets.only(top: 0, left: 15, right: 15, bottom: 15).w,
       width: double.infinity,
       decoration: BoxDecoration(
           border: Border.all(color: ColorManager.greyOpacityColor, width: 1.5.w),

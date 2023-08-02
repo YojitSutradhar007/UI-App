@@ -180,22 +180,18 @@ class UserProfile extends StatelessWidget {
                       Box(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                DesignLabel(
-                                  onTap: () {
-                                    context.push(RoutesName.selectLanguageScreen);
-                                  },
-                                  sizeBoxWidth: 200,
-                                  label_1: "Language",
-                                  child: const Padding(
-                                    padding: EdgeInsets.only(top: 10, right: 15),
-                                    child: WhiteContainer(iconAsset: IconsAssets.languageLogo),
-                                  ),
-                                ),
-                              ],
+                            DesignLabel(
+                              onTap: () {
+                                context.push(RoutesName.selectLanguageScreen);
+                              },
+                              sizeBoxWidth: 200,
+                              label_1: "Language",
+                              child: const Padding(
+                                padding: EdgeInsets.only(top: 10, right: 15),
+                                child: WhiteContainer(iconAsset: IconsAssets.languageLogo),
+                              ),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -214,109 +210,56 @@ class UserProfile extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                              const DesignLabel(
-                                sizeBoxWidth: 200,
-                                label_1: "Dark Mode",
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 10, right: 15),
-                                  child: WhiteContainer(iconAsset: IconsAssets.darkThemeLogo),
-                                ),
-                              ),
-                              SwitchButton(
-                                changed: false,
-                                perform: darkTheme.themeDarkTrue,
-                              ),
-                            ]),
-                            const Row(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                DesignLabel(
+                                const DesignLabel(
                                   sizeBoxWidth: 200,
-                                  label_1: "Help Center",
+                                  label_1: "Dark Mode",
                                   child: Padding(
                                     padding: EdgeInsets.only(top: 10, right: 15),
-                                    child: WhiteContainer(iconAsset: IconsAssets.helpCenterLogo),
+                                    child: WhiteContainer(iconAsset: IconsAssets.darkThemeLogo),
                                   ),
                                 ),
+                                SwitchButton(
+                                  changed: false,
+                                  perform: darkTheme.themeDarkTrue,
+                                ),
                               ],
+                            ),
+                            const DesignLabel(
+                              sizeBoxWidth: 200,
+                              label_1: "Help Center",
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10, right: 15),
+                                child: WhiteContainer(iconAsset: IconsAssets.helpCenterLogo),
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      PrimaryButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return Dialog(
-                                backgroundColor: ColorManager.whiteColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(const Radius.circular(20.0).w)),
-                                child: SizedBox(
-                                  height: 100.h,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Are you sure, you want to log out",
-                                        style: TextStyle(fontSize: 18.sp),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                fixedSize: Size(80.w, 20.h),
-                                                backgroundColor: ColorManager.blackColor,
-                                                shape:
-                                                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(20).w)),
-                                            onPressed: () {
-                                              userPreferences.logOutsetData(context);
-                                            },
-                                            child: Text(
-                                              "Log out",
-                                              style: TextStyle(fontSize: 14.sp),
-                                            ),
-                                          ),
-                                          ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                fixedSize: Size(70.w, 20.h),
-                                                backgroundColor: ColorManager.blackColor,
-                                                shape:
-                                                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(20).w)),
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                            child: Text(
-                                              "Close",
-                                              style: TextStyle(fontSize: 14.sp),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              IconsAssets.logOutLogo,
-                              height: 18,
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Text(
-                              "Log out",
-                              style: fontSizeWeightTextStyle(17, FontWeightManager.semiBold),
-                            )
-                          ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: PrimaryButton(
+                          onPressed: () {
+                            buildShowDialog(context);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                IconsAssets.logOutLogo,
+                                height: 18,
+                              ),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                "Log out",
+                                style: fontSizeWeightTextStyle(17, FontWeightManager.semiBold),
+                              )
+                            ],
+                          ),
                         ),
                       )
                     ],
@@ -327,6 +270,62 @@ class UserProfile extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future<dynamic> buildShowDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: ColorManager.whiteColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(const Radius.circular(20.0).w)),
+          child: Container(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Are you sure, you want to log out?",
+                  style: TextStyle(fontSize: 15.sp),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: Size(80.w, 20.h),
+                          backgroundColor: ColorManager.blackColor,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20).w)),
+                      onPressed: () {
+                        userPreferences.logOutsetData(context);
+                      },
+                      child: Text(
+                        "Log out",
+                        style: TextStyle(fontSize: 14.sp),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: Size(70.w, 20.h),
+                          backgroundColor: ColorManager.blackColor,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20).w)),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                        "Close",
+                        style: TextStyle(fontSize: 14.sp),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

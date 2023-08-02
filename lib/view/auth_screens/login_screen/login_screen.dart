@@ -7,7 +7,6 @@ import '../../../widget/reuse_widget.dart';
 import '../../../provider/singin_validation.dart';
 
 class LoginScreen extends StatefulWidget {
-
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -21,10 +20,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final signInMethod = FirebaseAuthServices();
 
-  void logIn(BuildContext context) {
+  Future logIn(BuildContext context) async {
     final signIn = Provider.of<SignInValidation>(context, listen: false);
     if (signIn.checkEmail && signIn.checkPass) {
-      signInMethod.signIN(context, _textEmailCtrl, _textPassCtrl);
+      await signInMethod.signIN(context, _textEmailCtrl.text.trim(), _textPassCtrl.text.trim());
     } else {
       debugPrint("not sign in ");
     }
@@ -35,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final validate = Provider.of<SignInValidation>(context, listen: false);
     return GestureDetector(
       onTap: () {
-       WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
+        WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       },
       child: Scaffold(
         backgroundColor: ColorManager.whiteColor,
@@ -48,6 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const CompanyDesign(),
                 DesignText(text: StringManager.email, fontSize: 12, color: ColorManager.blackColor, padding: 0),
                 NormalTextField(
+                  keyboardType: TextInputType.emailAddress,
                   topMargin: 5,
                   onChanged: validate.emailSignInValidate,
                   textCtrl: _textEmailCtrl,
@@ -87,7 +87,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 GestureDetector(
                   onTap: () {
                     context.push(RoutesName.forgetScreen);
-
                   },
                   child: const Text(
                     "Forget password?",

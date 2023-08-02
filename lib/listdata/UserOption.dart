@@ -27,7 +27,7 @@ class OptionButton {
     Option(
       label: "Discount Offers",
       iconAsset: IconsAssets.couponsFilledLogo,
-      navigation: "none",
+      navigation: RoutesName.discountOffersScreen,
     ),
     Option(
       label: "Setting",

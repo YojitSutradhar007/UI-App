@@ -2,6 +2,7 @@ import 'package:ecommerce/resources/import_resources.dart';
 import 'package:ecommerce/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import '../../resources/resources.dart';
+import '../../router/route_name.dart';
 import '../../services/api_constants.dart';
 import '../../widget/reuse_widget.dart';
 import '../screens.dart';
@@ -17,7 +18,7 @@ class SearchProduct extends StatefulWidget {
 class _SearchProductState extends State<SearchProduct> {
   void getData() {
     final searchData = Provider.of<SearchProductData>(context, listen: false);
-    searchData.searchData(APIConstants.searchURL + widget.searchText!);
+    searchData.searchData(APIConstants.searchURL + widget.searchText);
   }
 
   @override
@@ -66,57 +67,53 @@ class _SearchProductState extends State<SearchProduct> {
                           itemBuilder: (BuildContext context, index) {
                             return SizedBox(
                               height: 125.h,
-                              width: double.infinity,
                               child: GestureDetector(
                                 onTap: () {
                                   debugPrint("search screen");
-                                  // Get.to(
-                                  //   ProductDetailsView(
-                                  //     index: index,
-                                  //     model: value.searchProductData,
-                                  //   ),
-                                  // );
+                                  context.push(RoutesName.productDetailsScreen, extra: value.searchProductData[index]);
                                 },
                                 child: Container(
-                                  margin: const EdgeInsets.only(top: 10).r,
-                                  padding: const EdgeInsets.only(left: 7).r,
+                                  margin: const EdgeInsets.only(bottom: 10),
                                   decoration: BoxDecoration(
                                       color: RGBColorManager.rgbWhiteColor, borderRadius: BorderRadius.circular(17).w),
-                                  child: Row(children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8).w,
-                                      child: Container(
-                                        width: 90.w,
-                                        height: double.infinity,
-                                        decoration: BoxDecoration(
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 10).w,
+                                        child: Container(
+                                          width: 110.w,
+                                          height: double.infinity,
+                                          decoration: BoxDecoration(
                                             image: DecorationImage(
                                               fit: BoxFit.cover,
                                               image: NetworkImage(
                                                 value.searchProductData[index].thumbnail!,
                                               ),
                                             ),
-                                            color: Colors.blue,
-                                            borderRadius: BorderRadius.circular(20).w),
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(5).w,
-                                      child: Column(
+                                      Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Text(
-                                            "Name:- ${value.searchProductData[index].title}",
-                                            softWrap: true,
+                                          SizedBox(
+                                            width: 180.w,
+                                            child: Text(
+                                              "Name:- ${value.searchProductData[index].title}",
+                                              overflow: TextOverflow.ellipsis,
+                                              softWrap: true,
+                                            ),
                                           ),
                                           Text("Price_- ${value.searchProductData[index].price}"),
                                           Text("Discount:- ${value.searchProductData[index].discountPercentage}"),
                                           Text("Brand:- ${value.searchProductData[index].brand}"),
                                           Text("${value.searchProductData[index].category}"),
                                         ],
-                                      ),
-                                    )
-                                  ]),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
